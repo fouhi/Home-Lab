@@ -19,21 +19,23 @@ Once the SD card was in the Pi and powered on, it connected to my network automa
     ssh my_username@192.168.1.50
 
 Step 2: Securing the Perimeter (UFW)
-Before installing the stuff, I locked down the server with Uncomplicated Firewall.
+Before installing the stuff, I locked down the server with Uncomplicated Firewall:
+
     sudo apt update && sudo apt upgrade -y
     sudo apt install ufw -y
-    sudo ufw allow ssh          # Critical!
-    sudo ufw allow 80/tcp       # Pi-hole Web Admin
-    sudo ufw allow 53/tcp       # DNS
-    sudo ufw allow 53/udp       # DNS
-    sudo ufw allow 51820/udp    # WireGuard VPN
+    sudo ufw allow ssh          Critical!
+    sudo ufw allow 80/tcp       Pi-hole Web Admin
+    sudo ufw allow 53/tcp       DNS
+    sudo ufw allow 53/udp       DNS
+    sudo ufw allow 51820/udp    WireGuard VPN
     sudo ufw enable
 
 Step 3: The "Trixie" Static IP Gotcha
 Here is where things got interesting. I tried to run the standard Pi-hole install script (curl -sSL https://install.pi-hole.net | bash), but it crashed, complaining about my network environment.
 The Problem: The newest Raspberry Pi OS (based on Debian 13 "Trixie") uses NetworkManager for networking. The Pi-hole installer script expects the older Debian network tools and panics when trying to assign a static IP.
 
-The Fix: Manually set the static IP using nmtui before running the script.
+The Fix: Manually set the static IP using nmtui before running the script:
+
     Run sudo nmtui in the terminal.
     Go to Edit a connection -> Select the active network (Wired or Wi-Fi).
     Scroll down to IPv4 CONFIGURATION and change <Automatic> to <Manual>.
@@ -53,17 +55,20 @@ To get these benefits outside my house, I installed WireGuard. It's a wrapper th
     curl -L https://install.pivpn.io | bash
 
 During the setup:
+
     I selected WireGuard as the protocol.
     The script auto-detected Pi-hole and asked if I wanted to use it as the DNS server for the VPN. I selected Yes.
 
 After a reboot, I generated a client profile for my phone:
+
     pivpn add       # Name the client
     pivpn -qr       # Generate a QR code in the terminal
 
 I scanned the  QR code with the WireGuard app on my phone, and the tunnel was instantly configured. (Note: You must port-forward UDP 51820 on your router to the Pi for the VPN to work from the outside world).
 Step 6: Flipping the Switch (Router Config)
 
-The final step was telling my home router to send all network traffic to the Pi-hole.
+The final step was telling my home router to send all network traffic to the Pi-hole:
+
     Logged into my router's admin page.
     Found the DHCP/LAN Settings.
     Changed the Primary DNS to the Pi-hole's IP address (192.168.1.237).
