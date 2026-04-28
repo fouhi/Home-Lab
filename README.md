@@ -23,11 +23,11 @@ Before installing the stuff, I locked down the server with Uncomplicated Firewal
 
     sudo apt update && sudo apt upgrade -y
     sudo apt install ufw -y
-    sudo ufw allow ssh          Critical!
-    sudo ufw allow 80/tcp       Pi-hole Web Admin
-    sudo ufw allow 53/tcp       DNS
-    sudo ufw allow 53/udp       DNS
-    sudo ufw allow 51820/udp    WireGuard VPN
+    sudo ufw allow ssh          # Critical!
+    sudo ufw allow 80/tcp       # Pi-hole Web Admin
+    sudo ufw allow 53/tcp       # DNS
+    sudo ufw allow 53/udp       # DNS
+    sudo ufw allow 51820/udp    # WireGuard VPN
     sudo ufw enable
 
 Step 3: The "Trixie" Static IP Gotcha
