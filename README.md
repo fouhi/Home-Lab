@@ -1,6 +1,6 @@
-# Building a Headless Ad-Blocking Fortress: Pi-hole + WireGuard on Raspberry Pi OS "Trixie"
-# Setting up a Raspberry Pi as a network-wide ad blocker and VPN server is a rite of passage. But if you're running the bleeding-edge Debian 13 ("Trixie") underneath Raspberry Pi OS Lite, the classic installation scripts might throw some curveballs.
-# Here is how I built my headless setup , and how I bypassed the static IP installer crash.
+# Building a Headless Ad-Blocking Fortress: Pi-hole + WireGuard on Raspberry Pi OS "Trixie."
+Setting up a Raspberry Pi as a network-wide ad blocker and VPN server is a rite of passage. But if you're running the bleeding-edge Debian 13 ("Trixie") underneath Raspberry Pi OS Lite, the classic installation scripts might throw some curveballs.
+Here is how I built my headless setup , and how I bypassed the static IP installer crash.
 The Goal:
 
     Pi-hole: Block ads and trackers across the entire home Wi-Fi network.
