@@ -1,3 +1,49 @@
+# My Homelab
+
+This repository contains my homelab notes, network setup, and self-hosted service documentation.
+
+## Overview
+
+I use this repo to document my home network, services, and changes as the lab grows.
+
+## Hardware
+
+- MikroTik hEX S
+- TP-Link TL-SG108E
+- Lenovo ThinkCentre M720q
+- Lenovo ThinkPad T490
+- Lenovo Legion Slim 5
+- Raspberry Pi
+
+## Services
+
+- Pi-hole
+- Tailscale
+- Proxmox
+- Docker
+
+## Topology
+
+```text
+Internet
+   |
+[MikroTik hEX S]
+   |
+[TP-Link TL-SG108E]
+ |       |        |
+Server  Pi-hole  Laptops
+```
+
+## Notes
+
+- [MikroTik + TP-Link VLAN setup](mikrotik-tplink-vlans-readme.md)
+- [Pi-hole + Tailscale setup](pihole-vpn-tailscale.md)
+
+## Network layout
+
+- VLAN 10: Server
+- VLAN 20: Laptops
+- VLAN 30: Management / Pi-hole
 # Building a Headless Ad-Blocking Fortress: Pi-hole + Tailscale on Raspberry Pi OS "Trixie"
 
 Setting up a Raspberry Pi as a network-wide ad blocker and VPN server is a rite of passage. But if you're running the bleeding-edge Debian 13 ("Trixie") underneath Raspberry Pi OS Lite, or you are trapped behind your ISP's Carrier-Grade NAT (CGNAT), the classic installation scripts will fail.
