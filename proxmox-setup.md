@@ -1,6 +1,6 @@
 # Proxmox VE 9 — Post-Install Setup Guide
 
-> Tested on Proxmox VE 9.x (Debian Trixie). For home lab  use.
+Tested on Proxmox VE 9.x (Debian Trixie). For home lab  use.
 
 ---
 
@@ -31,7 +31,7 @@ nano /etc/apt/sources.list.d/ceph.sources
 
 ### 2b. Create the no-subscription repo
 
-> ⚠️ On Proxmox 9 / Trixie, use the `.sources` format — **not** `.list`
+⚠️ On Proxmox 9 / Trixie, use the `.sources` format — **not** `.list` ⚠️
 
 ```bash
 nano /etc/apt/sources.list.d/pve-no-subscription.sources
@@ -49,7 +49,7 @@ Signed-By: /usr/share/keyrings/proxmox-archive-keyring.gpg
 
 Save: `Ctrl+O` → `Enter` → `Ctrl+X`
 
-> The warning *"not recommended for production use"* is normal — perfectly fine for home lab use.
+The warning *"not recommended for production use"* is normal — perfectly fine.
 
 ---
 
