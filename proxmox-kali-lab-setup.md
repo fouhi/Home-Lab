@@ -1,23 +1,5 @@
 # Proxmox Cybersecurity Lab — Kali Setup & Network
 
-## Lab Architecture
-
-```
-Internet
-    │
-  vmbr0 (192.168.10.x) ←── Proxmox host
-    │
-  [Kali Attacker VM] ── also on ──► vmbr1 (192.168.100.x, isolated)
-                                          │
-                                     [Docker VM]  ← DVWA :8080, Juice Shop :3000
-                                     [Metasploitable] (later)
-```
-
-- **vmbr0** — internet-facing bridge, Proxmox host lives here
-- **vmbr1** — isolated lab bridge, NO gateway, NO internet, lab targets only
-
----
-
 ## Step 1 — Create Isolated Lab Bridge (vmbr1)
 
 1. Proxmox web UI → **Node → System → Network → Create → Linux Bridge**
@@ -169,28 +151,12 @@ In Proxmox → right-click VM → **Snapshots** → **Take Snapshot**
 | Docker VM (lab)   | vmbr1   | 192.168.100.10   |
 | Metasploitable    | vmbr1   | 192.168.100.30   |
 
----
-
-## Useful Kali Tools for the Lab
-
-| Tool         | Use Case                                      |
-|--------------|-----------------------------------------------|
-| Burp Suite   | Intercept HTTP traffic → DVWA, Juice Shop     |
-| sqlmap       | Automated SQL injection testing               |
-| nikto        | Web server vulnerability scanning             |
-| gobuster     | Directory & endpoint brute-forcing            |
-| ffuf         | Fast web fuzzer                               |
-| Metasploit   | Exploit framework (great with Metasploitable) |
-| wpscan       | WordPress vulnerability scanner               |
-
----
-
 ## TODO — Next Steps
 
 - [ ] Create Docker VM (Debian 12, vmbr1 only, static IP 192.168.100.10)
 - [ ] Install Docker + Docker Compose inside Docker VM
-- [ ] Deploy DVWA (`http://192.168.100.10:8080`)
-- [ ] Deploy OWASP Juice Shop (`http://192.168.100.10:3000`)
-- [ ] Import Metasploitable 2 (vmbr1 only)
+- [ ] Deploy DVWA 
+- [ ] Deploy OWASP Juice Shop 
+- [ ] Import Metasploitable 2
 - [ ] Add WebGoat container
 - [ ] Import VulnHub machines for CTF practice
