@@ -1,6 +1,6 @@
 # Proxmox VE 9 — Post-Install Setup Guide
 
-> Tested on Proxmox VE 9.x (Debian Trixie). For home lab / cybersecurity practice use.
+> Tested on Proxmox VE 9.x (Debian Trixie). For home lab  use.
 
 ---
 
@@ -96,7 +96,6 @@ Default storage:
 
 To add more storage: **Node → Disks → LVM → Create: LVM Volume Group**
 
-For network storage (NAS): **Datacenter → Storage → Add → NFS / SMB**
 
 ---
 
@@ -106,46 +105,10 @@ Allows per-VM VLAN tagging on a single bridge.
 
 **Node → System → Network → vmbr0 → Edit → check "VLAN aware" → Apply**
 
----
-
-## 8. Enable PCI Passthrough (optional)
-
-Only needed if passing a GPU or PCIe device to a VM.
-
-```bash
-nano /etc/default/grub
-```
-
-Edit the `GRUB_CMDLINE_LINUX_DEFAULT` line:
-
-```
-# Intel:
-GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt"
-
-# AMD:
-GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"
-```
-
-Then:
-
-```bash
-update-grub
-nano /etc/modules
-```
-
-Add:
-
-```
-vfio
-vfio_iommu_type1
-vfio_pci
-```
-
-Reboot.
 
 ---
 
-## 9. Basic Security — Fail2Ban
+## 8. Basic Security — Fail2Ban
 
 ```bash
 apt install fail2ban -y
@@ -157,42 +120,6 @@ Edit `/etc/fail2ban/jail.conf` to set `bantime` and `maxretry`, then:
 ```bash
 systemctl restart fail2ban
 ```
-
----
-
-## 10. Create Your First VM
-
-1. Upload ISO: **local → ISO Images → Upload**
-2. Click **Create VM** (top right) and follow the wizard
-3. After OS install, install the QEMU Guest Agent inside the VM:
-
-**Linux:**
-```bash
-apt install qemu-guest-agent && systemctl enable --now qemu-guest-agent
-```
-
-**Windows:** Install the VirtIO drivers ISO from the Proxmox wiki.
-
----
-
-## 11. Create Your First LXC Container
-
-1. Download a template: **local → CT Templates → Templates**
-2. Click **Create CT** and follow the wizard
-3. Unprivileged containers are recommended for security
-
----
-
-## Quick Reference
-
-| Task | Location |
-|------|----------|
-| Manage repos | Node → Updates → Repositories |
-| Add storage | Datacenter → Storage → Add |
-| Network config | Node → System → Network |
-| Firewall | Datacenter / Node → Firewall |
-| Backup config | Datacenter → Backup |
-| Task logs | Node → Task History |
 
 ---
 
