@@ -96,8 +96,8 @@ sudo apt update && sudo apt full-upgrade -y
 
 # Install QEMU guest agent (Proxmox integration)
 sudo apt install -y qemu-guest-agent
-sudo systemctl enable --now qemu-guest-agent
-
+sudo systemctl start qemu-guest-agent
+sudo systemctl status qemu-guest-agent
 # Run VM optimisation tool
 sudo kali-tweaks
 # → Virtualization → apply recommended settings
