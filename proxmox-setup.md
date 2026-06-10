@@ -1,4 +1,4 @@
-# Proxmox VE 9 — Post-Install Setup Guide
+# Proxmox VE 9 — Post-Install Guide
 
 Tested on Proxmox VE 9.x (Debian Trixie). For home lab  use.
 
