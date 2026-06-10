@@ -31,8 +31,9 @@ Server  Pi-hole  Laptops
 
 ## Notes
 
-- [MikroTik + TP-Link VLAN setup](mikrotik-tplink-vlans-readme.md)
+- [MikroTik + TP-Link VLAN setup](mikrotik-tplink-vlans.md)
 - [Pi-hole + Tailscale setup](pihole-vpn-tailscale.md)
+- [Proxmox Setup](proxmox-setup.md)
 
 ## Network layout
 
