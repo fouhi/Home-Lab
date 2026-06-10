@@ -16,3 +16,4 @@ This repository contains my homelab notes, network setup, and self-hosted servic
 - [MikroTik + TP-Link VLAN setup](mikrotik-tplink-vlans.md)
 - [Pi-hole + Tailscale setup](pihole-vpn-tailscale.md)
 - [Proxmox Setup](proxmox-setup.md)
+- [Proxmox Kali](proxmox-kali-lab-setup.md)
